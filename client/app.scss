@@ -1,0 +1,246 @@
+//@import "../node_modules/@blueprintjs/core/dist/variables";
+//$red: #efefef;
+//$pt-intent-primary: $red !default;
+$icon-font-path: "~@blueprintjs/core/resources/icons";
+@import "~@blueprintjs/core/src/blueprint.scss";
+@import '~@blueprintjs/table/dist/table.css';
+
+
+/* Generic pane rules */
+body { 
+  margin: 0; 
+}
+
+
+.page { left: 0; right: 0; top: 0; bottom: 0; }
+.row, .col, .page { overflow: hidden; position: absolute; }
+.row { left: 0; right: 0; }
+.col { top: 0; bottom: 0; }
+
+/*
+.scroll-x { overflow-x: auto;  }
+.scroll-y { overflow-y: auto; }
+.fill, .pane { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100% }
+.pane { display: none; }
+*/
+
+.header, .footer {
+    padding: 0 0.5em;
+}
+
+.header { 
+  font-size: 1.4em;
+}
+
+.body {
+  //background: #f5f8fa;
+}
+.right.col {
+  border-left: 1px solid black;
+}
+.right.col .body { 
+  padding: 0 0; 
+}
+
+/*New styles*/
+.right-inner.col {
+  //border-left: 1px solid black;
+  padding-left: 0px;
+  padding-right:  0px;
+}
+
+ /* Pane configuration */
+.left-inner.col {
+  top: 50px;
+  left: 0px;
+  width: 800px;
+}
+.right-inner.col {
+  top: 50px; 
+  left: 800px; 
+  width: 800px; 
+}
+
+.chart-1 { 
+  top: 46px; width:100%; 
+}
+
+
+ /* Pane configuration */
+.left.col { width: 55px;  background-color: #182026; }
+.right.col { top:0px; left: 55px; right: 0; }
+.header.row { height: 5px;  line-height: 45px; background-color: #CED9E0; }
+.body.row { top: 46px; bottom: 36px; }
+.body.row { top: 5px; bottom: 36px;  }
+
+.footer.row { 
+  height: 35px; 
+  bottom: 0; 
+  line-height: 35px; 
+  border-top: 1px solid rgb(152, 152, 152)
+}
+
+.pt-dialog{
+  width : 700px;
+  height: 500px;
+}
+
+//-------------Badge -----------------------
+
+.icon-wrapper{
+    position:relative;
+    float:left;
+}
+
+.badge{
+  font-size: 50%;
+  //padding: .6em;
+  border-radius: 999px;
+  line-height: 0.50em;
+  color: white;
+  background: rgba(255, 0, 0, 0.85);
+  text-align: center;
+  //min-width: -5em;
+  font-weight: bold;
+  position: absolute;
+  top: -1px;
+  right: -10px;
+  padding: 6px;
+}
+
+//----------End Badge -----------------------
+
+.sideMenuStyle{
+  width: 250px;
+  // background-color: #f5f8fa
+}
+
+.appStyle {
+ // background-color: rgb(204, 222, 232);
+}
+
+.line {
+  fill: none;
+  stroke:#48aff0;
+  // stroke: #c9c3e5;
+  stroke-width: 6px;
+}
+
+.line2 {
+    fill: none;
+     stroke: #3DCC91;
+    stroke-width: 6px;
+}
+
+.shadow {
+  -webkit-filter: drop-shadow( 2px 2px 2px rgba(0,0,0,.3) );
+  filter: drop-shadow( 2px 2px 2px rgba(0,0,0,.3) );
+}
+
+.axis .domain{
+    fill: #ffffff;
+}
+
+.y-axis .domain{
+    //fill: #ffffff;
+    stroke: #CED9E0;
+}
+
+.y-axis g, .x-axis g {
+    stroke: #667e9a;
+}
+
+.axis line {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #BFCCD6;
+    image-rendering: crispEdges;
+}
+
+line {
+    stroke-width: 0px;
+}
+
+ text {
+    font-size: 10px;
+    stroke: #667e9a
+}
+
+g {
+  stroke-width: 0px;
+}
+
+.y-axis{
+    background-color: grey;
+}
+
+.axis line {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #BFCCD6;
+}
+
+
+ .axis{
+    // fill:#f9f9f9;
+     stroke-width: 0px;
+ }
+
+// .axis text {
+//     font-size: 10px;
+// }
+
+.y-grid .tick{
+    stroke: #f5f8fa dotted;
+    opacity: 1;
+}
+// .widget:hover {
+//   background-color: #f5f8fa;
+// }
+
+
+.pt-tab-list{
+  padding-left: 20px;
+  background-color: #CED9E0;
+  border-bottom: 1px double;
+}
+
+.pt-tab-list > *:not(:last-child) {
+  margin-right: 8px !important;
+}
+
+.pt-tab[aria-selected="true"] {
+  margin-bottom: -1px;
+  height: 34px;
+  background-color: white;
+  border-bottom: none;
+}
+
+.pt-tab{
+    height: 33px;
+     margin-bottom: 2px;
+}
+
+.pt-tab-indicator-wrapper{
+    height: 0px !important;
+    width:0px !important;
+    transform: none !important;
+}
+
+
+.bar-green {
+  fill: #53be9c;
+}
+.bar-white {
+  fill: #ffffff;
+}
+
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+

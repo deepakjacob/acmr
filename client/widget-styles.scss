@@ -1,0 +1,140 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.widget{
+    border: 1px solid $primaryGrey;
+    margin: 2px 10px 20px;
+    //box-shadow: 0 2px 4px rgba(0,0,0,.18), 0 2px 3px rgba(0,0,0,.28);
+    //box-shadow: 0 1px 1px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.28);
+    //transition: all .3s cubic-bezier(.645,.045,.355,1);
+    margin: 7px;
+}
+
+.range-chart{
+    position: relative;
+    border: 1px dotted;
+    margin-left: 25px;
+    margin-right: 25px;
+    height:100%;
+}
+
+.graph-bg{
+    background-color: #f5f8fa;
+}
+
+.pt-slider.pt-slider-unlabeled {
+  height: 130px !important;
+}
+
+.pt-slider-handle {
+  height: 130px !important;
+  width:14px !important;
+}
+
+.pt-slider-track, .pt-slider-progress {
+  height: 120px !important;
+}
+
+.pt-slider-track, .pt-slider-progress {
+  background: none !important; 
+ 
+}
+
+.pt-slider-progress {
+   //background: #53be9c !important; 
+   background: #6ec5ff !important; 
+
+  opacity: 0.12;
+}
+
+.widget-header {
+    @include border-radius-top-left-right(5px);
+    width: 100%;
+    height: 30px;
+    background-color: $secondaryGrey;
+    border-bottom: 1px solid $primaryGrey;
+}
+
+.widget-title{
+  @include padding(8px, 0px, 0px, 5px);
+  @include uppercase();
+  @include font(Lato, .8rem, 700);
+  color: $titleGrey;
+  margin-right: 5px;
+}
+
+
+.table-header{
+  @include padding(4px, 0px, 8px, 0px);
+  @include border(1px solid $primaryGrey, 0, 0, 0);
+  @include font(Lato, .8rem, 700);
+  margin-top: 10px;
+  color: $titleGrey;
+}
+
+.stat-divider{
+  width: 2px;
+  background-color: $primaryGrey;
+}
+
+.label-red{
+  @include labelValue("Lato", 1.5rem, normal, $primaryRed);
+}
+
+
+.label-green{
+  @include labelValue("Lato", 1.5rem, normal, $primaryGreen);
+}
+
+.label-orange{
+  @include labelValue("Lato", 1.5rem, normal, $primaryOrange);
+}
+
+.label-blue{
+  @include labelValue("Lato", 1.5rem, normal, $primaryBlue);
+}
+
+.label-grey{
+  @include labelValue("Lato", 1rem, 500, $primaryGrey);
+}
+
+.label-large-grey{
+  @include labelValue("Lato", 1.5rem, 500, $primaryGrey);
+}
+
+.stat-container{
+  @include stats(rgba(0, 0, 0, .87));
+}
+
+.chart-header{
+  @include labelValue("Lato", 1rem, 500, $primaryGrey);
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  //color: $primaryGrey;
+}
+.chart-header-detail{
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-grow: .08
+}
+.chart-header-green-label{
+  color: $primaryGreen;
+  margin-right: 5px;
+}
+.chart-header-grey-label{
+  color: $primaryGrey;
+  margin-right: 5px;
+}
+
+.chart-header-progress{
+  width:200px;
+  padding-bottom: 0px;
+  height: 8px;
+  box-sizing: border-box;
+}
+

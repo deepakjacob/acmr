@@ -1,0 +1,4 @@
+Tasks to be completed:
+    ☐ Remove references to the blueprint.scss file and icon path
+    ☐ Extract the styles from the tsx files
+    ☐ Tooltips for bar chart    

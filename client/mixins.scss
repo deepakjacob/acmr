@@ -1,0 +1,59 @@
+@import "./variables.scss";
+
+@mixin border-radius-top-left-right($radius){
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border($top, $right, $bottom, $left){
+  border-top: $top;
+  border-right: $right;
+  border-bottom: $bottom;
+  border-left: $left;
+}
+
+@mixin padding($top, $right, $bottom, $left){
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin margin($top, $right, $bottom, $left){
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin font($family, $size, $weight){
+   font-family: $family;
+   font-size: $size;
+   font-weight: $weight;
+}
+
+@mixin flex($justifyContent, $alignContent){
+  display: flex;
+  justify-content: $justifyContent;
+  align-content: $alignContent;
+}
+
+@mixin uppercase(){
+  text-transform: uppercase;
+}
+
+@mixin labelValue($family, $size, $weight, $color){
+  @include font($family, $size, $weight);
+  color: $color;
+}
+
+@mixin stats($color){
+  @include padding(8px, 8px, 8Px, 8px);
+  @include margin(0, 0, 10px, 0);
+  @include border(0, 0, 1px solid $primaryGrey, 0);
+  @include uppercase();
+  @include flex(space-around, space-around);
+
+  text-align: center;
+  color: $color;
+}
