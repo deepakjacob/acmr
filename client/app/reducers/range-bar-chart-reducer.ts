@@ -43,7 +43,7 @@ export default handleActions({
                 savingsTotal: savTotal
             }
         };
-    }, [Actions.SET_TRANSACTION_RANGE]: (state: BarChartWidgetState, action) => {
+    }, [Actions.FETCH_TRANSACTIONS]: (state: BarChartWidgetState, action) => {
 
         return {
             originalDateRange: state.originalDateRange,
@@ -62,5 +62,6 @@ export default handleActions({
         };
     }
 }, initialState);
+
 
 
