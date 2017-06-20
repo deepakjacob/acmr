@@ -43,8 +43,8 @@ export class EarningsExpenseComponent extends React.Component<App.Props, App.Sta
         const dateRange = this.mapRangeToDate(range);
         // once the date range is calculated, fire the action
         const { actions } = this.props;
-        //actions.setTransactionRange(dateRange);
-        actions.retrieveTransactions(dateRange);
+        actions.setTransactionRange(dateRange);
+        //actions.retrieveTransactions(dateRange);
     }
 
     private getStats = (t: Transaction[],
