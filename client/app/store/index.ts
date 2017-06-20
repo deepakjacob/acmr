@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, Store } from 'redux';
+import thunk from 'redux-thunk';
+import * as promiseMiddleware from 'redux-promise';
 import { logger } from '../middleware';
 import rootReducer, { RootState } from '../reducers';
 
@@ -7,7 +9,7 @@ export function configureStore(initialState?: RootState): Store<RootState> {
         ? window.devToolsExtension()(createStore)
         : createStore;
 
-    const createStoreWithMiddleware = applyMiddleware(logger)(create);
+    const createStoreWithMiddleware = applyMiddleware(thunk, promiseMiddleware, logger)(create);
 
     const store = createStoreWithMiddleware(rootReducer, initialState) as Store<RootState>;
 
