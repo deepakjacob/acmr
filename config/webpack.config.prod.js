@@ -40,7 +40,7 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
 // This is the production configuration.
@@ -83,7 +83,7 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -129,22 +129,34 @@ module.exports = {
       {
         exclude: [
           /\.html$/,
-          /\.(js|jsx)$/,
-          /\.(ts|tsx)$/,
+          // We have to write /\.(js|jsx)(\?.*)?$/ rather than just /\.(js|jsx)$/
+          // because you might change the hot reloading server from the custom one
+          // to Webpack's built-in webpack-dev-server/client?/, which would not
+          // get properly excluded by /\.(js|jsx)$/ because of the query string.
+          // Webpack 2 fixes this, but for now we include this hack.
+          // https://github.com/facebookincubator/create-react-app/issues/1713
+          /\.(js|jsx)(\?.*)?$/,
+          /\.(ts|tsx)(\?.*)?$/,
           /\.css$/,
           /\.json$/,
           /\.bmp$/,
           /\.gif$/,
           /\.jpe?g$/,
           /\.png$/,
+          /\.ttf/,
+          /\.eot/,
+          /\.svg/,
+          /\.scss/,
+
         ],
         loader: require.resolve('file-loader'),
         options: {
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
-      // "url" loader works just like "file" loader but it also embeds
-      // assets smaller than specified size as data URLs to avoid requests.
+      // "url" loader works like "file" loader except that it embeds assets
+      // smaller than specified limit in bytes as data URLs to avoid requests.
+      // A missing `test` is equivalent to a match.
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         loader: require.resolve('url-loader'),
@@ -158,7 +170,51 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         include: paths.appSrc,
         loader: require.resolve('ts-loader'),
+        // options: {
+        //   transpileOnly: true,
+        //   happyPackMode: true,
+        // },
       },
+
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+
+
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
+      },
+
+      {
+        test: /\.(ttf|eot|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[hash].[ext]'
+          }
+        }
+      }
+
+      , {
+        test: /\.(woff|woff2)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: 'fonts/[hash].[ext]',
+            limit: 5000,
+            mimetype: 'application/font-woff'
+          }
+        }
+      },
+
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
